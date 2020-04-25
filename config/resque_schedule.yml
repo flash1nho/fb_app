@@ -1,0 +1,4 @@
+exchange_rate:
+  cron: '*/5 * * * *'
+  class: ExchangeRateJob
+  description: 'exchange rate update'

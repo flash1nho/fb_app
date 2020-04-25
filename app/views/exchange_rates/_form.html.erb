@@ -1,0 +1,27 @@
+<%= form_with(model: exchange_rate, local: true) do |form| %>
+  <% if exchange_rate.errors.any? %>
+    <div class="alert fade in alert-danger">
+      <h2><%= exchange_rate.errors.count %> <%= Russian.p(exchange_rate.errors.count, "ошибка", "ошибки", "ошибок") %></h2>
+
+      <ul>
+      <% exchange_rate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :rate_at %>
+    <%= form.text_field :rate_at, id: :exchange_rate_rate_at, class: 'js-datetimepicker', value: exchange_rate.rate_at_localtime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate_value %>
+    <%= form.text_field :rate_value, id: :exchange_rate_rate_value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
